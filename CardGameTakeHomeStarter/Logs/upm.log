@@ -1,0 +1,27 @@
+[2026-08-05T18:41:32.225Z][INFO] Command-line: 'D:\\Software\\Unity Installs\\6000.5.0f1\\Editor\\Data\\Resources\\PackageManager\\Server\\UnityPackageManager.exe' server -s 138548 --ipc-path Unity-Upm-138548 -l 2 --log-file 'D:\\Projects\\Kobold Collective\\CardGameTakeHomeStarter/Logs/upm.log'
+[2026-08-05T18:41:32.250Z][INFO] IPC server started (IPC path=Unity-Upm-138548).
+[2026-08-05T18:41:32.250Z][INFO] Hint: To connect to this UPM instance, launch Unity with the command-line parameter -upmIpcPath Upm-138548.
+[2026-08-05T18:41:48.747Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-05T18:41:48.851Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-05T18:41:48.861Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-05T18:41:49.154Z][INFO] config:project:get-registries --> 200 (303 ms)
+[2026-08-05T18:41:49.391Z][INFO] project:list-packages --> 200 (645 ms)
+[2026-08-05T18:41:49.406Z][INFO] project:list-packages --> 200 (545 ms)
+[2026-08-05T18:42:01.789Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-05T18:42:01.812Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-05T18:42:01.972Z][INFO] project:list-packages --> 200 (183 ms)
+[2026-08-05T18:42:01.995Z][INFO] project:list-packages --> 200 (183 ms)
+[2026-08-05T18:42:03.980Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-05T18:42:04.083Z][INFO] project:list-packages --> 200 (103 ms)
+[2026-08-05T18:42:04.239Z][INFO] config:project:get-registries <-- Request received
+params: {}
+[2026-08-05T18:42:04.243Z][INFO] config:project:get-registries --> 200 (4 ms)
+[2026-08-05T18:42:07.652Z][INFO] project:list-packages <-- Request received
+params: {}
+[2026-08-05T18:42:07.768Z][INFO] project:list-packages --> 200 (116 ms)
