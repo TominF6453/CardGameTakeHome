@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6594686407973317618}
   - component: {fileID: 586737983592403423}
   - component: {fileID: 1402055782490911977}
+  - component: {fileID: 1224706125921059715}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -88,3 +89,16 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1224706125921059715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3835885804683855477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a1e5616e7942a48af1ce5b988c8e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.Card
+  cardSprite: {fileID: 586737983592403423}
