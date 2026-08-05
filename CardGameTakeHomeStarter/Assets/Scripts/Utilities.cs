@@ -31,5 +31,16 @@ namespace CardGame {
 		public static void Shuffle<T>( this IList<T> list, int loops = 1 ) {
 			for ( int i = 0; i < loops; i++ ) Shuffle( list );
 		}
+
+		/// <summary>
+		/// Pop method for Lists, returns the "top" value (last) and removes it
+		/// from the list.
+		/// </summary>
+		/// <returns>The last element of the list.</returns>
+		public static T Pop<T>( this IList<T> list ) {
+			T obj = list[^1];
+			list.RemoveAt( list.Count - 1 );
+			return obj;
+		}
 	}
 }

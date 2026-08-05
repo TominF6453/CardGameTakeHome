@@ -12,6 +12,10 @@ namespace CardGame {
 		#region Inspector Vars
 		[Header("All Card Datas")]
 		[SerializeField] CardData[] cardDatas;
+
+		[Header("References")]
+		[SerializeField] Card cardPrefab;
+		[SerializeField] Transform handCanvasParent;
 		#endregion
 
 		#region Local Vars
@@ -39,6 +43,13 @@ namespace CardGame {
 		#endregion
 
 		#region Helpers
+		public void DrawCard() {
+			// Draw the top card from the current deck
+			CardData nextCard = currentDeck.Pop();
+			// Instantiate card.
+			Card card = Instantiate(cardPrefab, handCanvasParent);
+			card.ApplyCardData( nextCard );
+		}
 		#endregion
 
 		#region Coroutines
