@@ -1955,6 +1955,8 @@ GameObject:
   - component: {fileID: 1485507868}
   - component: {fileID: 1485507867}
   - component: {fileID: 1485507869}
+  - component: {fileID: 1485507870}
+  - component: {fileID: 1485507871}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2109,6 +2111,37 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb1d00328e9913841bfc7c27f4277840, type: 2}
   cardPrefab: {fileID: 1224706125921059715, guid: 5156c2323509d49a689bc3e2195b4504, type: 3}
   handCanvasParent: {fileID: 1991041870}
+--- !u!114 &1485507870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485507866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f0ee463f9cb884b8c110f204450a94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayAreaManager
+  playAreaTransform: {fileID: 15868386}
+  playAreaWidthCards: 3
+  playAreaHeightCards: 11
+  lateralCardOffset: 120
+  verticalCardOffset: 167
+--- !u!114 &1485507871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485507866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb2ccb85cfd19e44ba42cae7a0dbea5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardGame.HandManager
+  handArea: {fileID: 1991041870}
+  handSize: 5
 --- !u!1 &1838675447
 GameObject:
   m_ObjectHideFlags: 0
