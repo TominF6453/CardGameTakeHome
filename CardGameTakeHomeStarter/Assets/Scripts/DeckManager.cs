@@ -44,11 +44,19 @@ namespace CardGame {
 
 		#region Helpers
 		public void DrawCard() {
+			// Check hand for space.
+			if ( HandManager.AtMaxHandSize ) {
+				Debug.Log( $"[DeckManager] Not drawing, already at max hand size!" );
+				return;
+			}
+
 			// Draw the top card from the current deck
 			CardData nextCard = currentDeck.Pop();
 			// Instantiate card.
-			Card card = Instantiate(cardPrefab, handCanvasParent);
+			Card card = Instantiate(cardPrefab);
 			card.ApplyCardData( nextCard );
+			// Send to hand.
+			HandManager.AddCardToHand( card );
 		}
 		#endregion
 
