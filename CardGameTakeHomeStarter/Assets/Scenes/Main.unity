@@ -1635,7 +1635,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1128365018}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1485507869}
+        m_TargetAssemblyTypeName: CardGame.DeckManager, Assembly-CSharp
+        m_MethodName: DrawCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1128365018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,6 +2107,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5252600ef1737e54492bd32b60a81f56, type: 2}
   - {fileID: 11400000, guid: 2fd445afe00f98f458e7dfd5439a4df2, type: 2}
   - {fileID: 11400000, guid: cb1d00328e9913841bfc7c27f4277840, type: 2}
+  cardPrefab: {fileID: 1224706125921059715, guid: 5156c2323509d49a689bc3e2195b4504, type: 3}
+  handCanvasParent: {fileID: 1991041870}
 --- !u!1 &1838675447
 GameObject:
   m_ObjectHideFlags: 0
