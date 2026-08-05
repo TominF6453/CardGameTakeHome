@@ -4,3 +4,6 @@ CardGameTakeHomeStarter/UserSettings/
 CardGameTakeHomeStarter/.vs/
 CardGameTakeHomeStarter/Temp/
 CardGameTakeHomeStarter/obj/
+CardGameTakeHomeStarter/Assembly-CSharp.csproj
+CardGameTakeHomeStarter/Assembly-CSharp-Editor.csproj
+CardGameTakeHomeStarter/CardGameTakeHomeStarter.sln
