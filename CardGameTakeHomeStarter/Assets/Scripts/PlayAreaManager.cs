@@ -93,7 +93,9 @@ namespace CardGame {
 		#region Helpers
 		public void ResetPlayAreaManager() {
 			// Destroy all cards present, construct new grid.
-			foreach ( CardSlot slot in cardSlotGrid ) Destroy( slot.GetCardTransform.gameObject );
+			foreach ( CardSlot slot in cardSlotGrid ) {
+				if ( slot.HasCard ) Destroy( slot.GetCardTransform.gameObject );
+			}
 			ConstructCardGrid();
 
 			DisableEndgameUI();
@@ -258,6 +260,7 @@ namespace CardGame {
 			gridYPos = gridY;
 		}
 
+		public bool HasCard => cardUI != null;
 		public CardData GetCard => presentCard;
 		public Transform GetCardTransform => cardUI.transform;
 		public Vector2 GetCanvasPosition => new(canvasXPos, canvasYPos);
@@ -268,7 +271,5 @@ namespace CardGame {
 			presentCard = card.GetData;
 			status = CardSlotStatus.Full;
 		}
-
-
 	}
 }
