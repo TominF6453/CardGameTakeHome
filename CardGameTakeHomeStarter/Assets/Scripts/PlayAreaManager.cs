@@ -38,6 +38,8 @@ namespace CardGame {
 		public static float LateralCardOffset => Instance.lateralCardOffset;
 		public static float VerticalCardOffset => Instance.verticalCardOffset;
 
+		// Convert canvas local position to world.
+		public static Vector3 GetSlotWorldPos( CardSlot slot ) => Instance.playAreaTransform.TransformPoint( slot.GetCanvasPosition );
 		public static bool IsPointInPlayArea ( Vector2 screenPoint ) {
 			return RectTransformUtility.RectangleContainsScreenPoint( (RectTransform)Instance.playAreaTransform, screenPoint );
 		}

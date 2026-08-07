@@ -63,7 +63,7 @@ namespace CardGame {
 
 					// Play the physical card in the canvas rect for the play area based on the slot's canvas positions.
 					transform.SetParent( PlayAreaManager.PlayArea );
-					rect.anchoredPosition = slot.GetCanvasPosition;
+					rect.position = PlayAreaManager.GetSlotWorldPos( slot );
 
 					// Remove the card from the HandManager.
 					HandManager.RemoveCardFromHand( this );
