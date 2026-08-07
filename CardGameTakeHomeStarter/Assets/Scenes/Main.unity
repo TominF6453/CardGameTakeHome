@@ -2125,8 +2125,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayAreaManager
   playAreaTransform: {fileID: 15868386}
-  playAreaWidthCards: 3
-  playAreaHeightCards: 11
+  playAreaWidthCards: 11
+  playAreaHeightCards: 3
   lateralCardOffset: 120
   verticalCardOffset: 167
 --- !u!114 &1485507871
