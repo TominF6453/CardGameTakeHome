@@ -16,6 +16,7 @@ namespace CardGame {
 		[Header("References")]
 		[SerializeField] Card cardPrefab;
 		[SerializeField] Transform handCanvasParent;
+		[SerializeField] Canvas rootCanvas;
 		#endregion
 
 		#region Local Vars
@@ -23,6 +24,7 @@ namespace CardGame {
 		#endregion
 
 		#region Parameters/Getters
+		public static Canvas GetRootCanvas => Instance.rootCanvas;
 		#endregion
 
 		#region Mono Implementation
