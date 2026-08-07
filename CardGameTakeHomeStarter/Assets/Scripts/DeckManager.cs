@@ -18,6 +18,7 @@ namespace CardGame {
 		[SerializeField] Transform handCanvasParent;
 		[SerializeField] Transform discardAreaTransform;
 		[SerializeField] Canvas rootCanvas;
+		[SerializeField] Transform[] deckUITransforms;
 		#endregion
 
 		#region Local Vars
@@ -26,6 +27,7 @@ namespace CardGame {
 
 		#region Parameters/Getters
 		public static Canvas GetRootCanvas => Instance.rootCanvas;
+		public static bool IsDeckEmpty => Instance.currentDeck.Count == 0;
 
 		public static bool IsPointInDiscardArea( Vector2 screenPoint ) {
 			return RectTransformUtility.RectangleContainsScreenPoint( (RectTransform)Instance.discardAreaTransform , screenPoint );
@@ -52,7 +54,7 @@ namespace CardGame {
 		#region Helpers
 		public void DrawCard() {
 			// Check hand for space.
-			if ( HandManager.AtMaxHandSize ) {
+			if ( HandManager.IsHandFull ) {
 				Debug.Log( $"[DeckManager] Not drawing, already at max hand size!" );
 				return;
 			}
@@ -64,6 +66,11 @@ namespace CardGame {
 			card.ApplyCardData( nextCard );
 			// Send to hand.
 			HandManager.AddCardToHand( card );
+
+			// Check deck empty, disable anything related to deck UI.
+			if ( IsDeckEmpty ) {
+				foreach ( Transform t in deckUITransforms ) t.gameObject.SetActive( false );
+			}
 		}
 		#endregion
 

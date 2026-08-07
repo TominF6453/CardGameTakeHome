@@ -24,9 +24,9 @@ namespace CardGame {
 		#endregion
 
 		#region Parameters/Getters
-		public bool HandFull => cardsInHand.Count >= handSize;
-
 		public static Transform GetHandTransform => Instance.handArea;
+		public static bool IsHandEmpty => Instance.cardsInHand.Count == 0;
+		public static bool IsHandFull => Instance.cardsInHand.Count >= Instance.handSize;
 		#endregion
 
 		#region Mono Implementation
@@ -53,7 +53,6 @@ namespace CardGame {
 		}
 		public static void AddCardToHand( Card card ) => Instance.AddCard( card );
 		public static void RemoveCardFromHand( Card card ) => Instance.RemoveCard( card );
-		public static bool AtMaxHandSize => Instance.HandFull;
 		#endregion
 
 		#region Coroutines

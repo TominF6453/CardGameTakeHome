@@ -2113,6 +2113,9 @@ MonoBehaviour:
   handCanvasParent: {fileID: 1991041870}
   discardAreaTransform: {fileID: 374664328}
   rootCanvas: {fileID: 108522727}
+  deckUITransforms:
+  - {fileID: 578052664}
+  - {fileID: 1128365016}
 --- !u!114 &1485507870
 MonoBehaviour:
   m_ObjectHideFlags: 0
