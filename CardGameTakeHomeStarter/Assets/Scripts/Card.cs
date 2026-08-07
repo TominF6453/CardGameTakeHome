@@ -69,6 +69,7 @@ namespace CardGame {
 					HandManager.RemoveCardFromHand( this );
 				}
 			} else { // Dropped anywhere else, return to hand.
+				canvasGroup.blocksRaycasts = true; // Needs to be selectable again.
 				transform.SetParent( HandManager.GetHandTransform );
 			}
 		}
