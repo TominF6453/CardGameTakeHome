@@ -14,6 +14,7 @@ namespace CardGame {
         #region Inspector Vars
         [Header("References")]
         [SerializeField] Transform handArea;
+		[SerializeField] Transform[] handUITransforms;
 
 		[Header("Parameters")]
 		[SerializeField] int handSize = 5;
@@ -53,6 +54,11 @@ namespace CardGame {
 		}
 		public static void AddCardToHand( Card card ) => Instance.AddCard( card );
 		public static void RemoveCardFromHand( Card card ) => Instance.RemoveCard( card );
+
+		public void DisableUI() {
+			foreach ( Card card in cardsInHand ) card.SetInteractable( false );
+			foreach ( Transform t in handUITransforms ) t.gameObject.SetActive( false );
+		}
 		#endregion
 
 		#region Coroutines

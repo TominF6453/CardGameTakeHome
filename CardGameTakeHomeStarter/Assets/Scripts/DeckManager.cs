@@ -69,8 +69,16 @@ namespace CardGame {
 
 			// Check deck empty, disable anything related to deck UI.
 			if ( IsDeckEmpty ) {
-				foreach ( Transform t in deckUITransforms ) t.gameObject.SetActive( false );
+				DisableUI();
 			}
+		}
+
+		public void DrawToFull() {
+			while ( !HandManager.IsHandFull || !IsDeckEmpty ) DrawCard();
+		}
+
+		public void DisableUI() {
+			foreach ( Transform t in deckUITransforms ) t.gameObject.SetActive( false );
 		}
 		#endregion
 

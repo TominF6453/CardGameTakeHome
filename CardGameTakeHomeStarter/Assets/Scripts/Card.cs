@@ -24,6 +24,7 @@ namespace CardGame {
 		#endregion
 
 		#region Parameters/Getters
+		public CardData GetData => cardData;
 		#endregion
 
 		#region Mono Implementation
@@ -37,7 +38,7 @@ namespace CardGame {
 		#region DragHandler Implementation
 		public void OnBeginDrag( PointerEventData eventData ) {
 			// Stop blocking raycasts and remove from hand.
-			canvasGroup.blocksRaycasts = false;
+			SetInteractable(false);
 			transform.SetParent( DeckManager.GetRootCanvas.transform );
 			transform.localScale = Utilities.SameValueVector( 1.2f ); // Make card slightly (20%) bigger when dragging (picking it up off the table)
 		}
@@ -59,7 +60,7 @@ namespace CardGame {
 				// If the slot is valid...
 				if ( slot != null ) {
 					// Play the card in the data array.
-					PlayAreaManager.PlayCard( slot , cardData );
+					PlayAreaManager.PlayCard( slot , this );
 
 					// Play the physical card in the canvas rect for the play area based on the slot's canvas positions.
 					transform.SetParent( PlayAreaManager.PlayArea );
@@ -69,7 +70,7 @@ namespace CardGame {
 					HandManager.RemoveCardFromHand( this );
 				} else {
 					// Return card to hand.
-					canvasGroup.blocksRaycasts = true; // Needs to be selectable again.
+					SetInteractable(true); // Needs to be selectable again.
 					transform.SetParent( HandManager.GetHandTransform );
 				}
 			// If dropped in the discard area...
@@ -78,7 +79,7 @@ namespace CardGame {
 				HandManager.RemoveCardFromHand( this );
 				Destroy( this.gameObject );
 			} else { // Dropped anywhere else, return to hand.
-				canvasGroup.blocksRaycasts = true; // Needs to be selectable again.
+				SetInteractable(true); // Needs to be selectable again.
 				transform.SetParent( HandManager.GetHandTransform );
 			}
 		}
@@ -91,6 +92,10 @@ namespace CardGame {
 		public void ApplyCardData( CardData card ) {
 			cardData = card;
 			cardSprite.sprite = CardSpriteManager.GetSpriteForCard( card );
+		}
+
+		public void SetInteractable( bool enabled ) {
+			canvasGroup.blocksRaycasts = enabled;
 		}
 		#endregion
 
