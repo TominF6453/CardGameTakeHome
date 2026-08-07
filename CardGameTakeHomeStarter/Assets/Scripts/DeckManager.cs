@@ -16,6 +16,7 @@ namespace CardGame {
 		[Header("References")]
 		[SerializeField] Card cardPrefab;
 		[SerializeField] Transform handCanvasParent;
+		[SerializeField] Transform discardAreaTransform;
 		[SerializeField] Canvas rootCanvas;
 		#endregion
 
@@ -25,6 +26,10 @@ namespace CardGame {
 
 		#region Parameters/Getters
 		public static Canvas GetRootCanvas => Instance.rootCanvas;
+
+		public static bool IsPointInDiscardArea( Vector2 screenPoint ) {
+			return RectTransformUtility.RectangleContainsScreenPoint( (RectTransform)Instance.discardAreaTransform , screenPoint );
+		}
 		#endregion
 
 		#region Mono Implementation

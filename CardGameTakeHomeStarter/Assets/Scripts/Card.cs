@@ -67,7 +67,16 @@ namespace CardGame {
 
 					// Remove the card from the HandManager.
 					HandManager.RemoveCardFromHand( this );
+				} else {
+					// Return card to hand.
+					canvasGroup.blocksRaycasts = true; // Needs to be selectable again.
+					transform.SetParent( HandManager.GetHandTransform );
 				}
+			// If dropped in the discard area...
+			} else if ( DeckManager.IsPointInDiscardArea( eventData.position ) ) {
+				// Remove the card from hand, then just destroy it.
+				HandManager.RemoveCardFromHand( this );
+				Destroy( this.gameObject );
 			} else { // Dropped anywhere else, return to hand.
 				canvasGroup.blocksRaycasts = true; // Needs to be selectable again.
 				transform.SetParent( HandManager.GetHandTransform );

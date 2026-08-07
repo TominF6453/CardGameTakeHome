@@ -2111,6 +2111,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb1d00328e9913841bfc7c27f4277840, type: 2}
   cardPrefab: {fileID: 1224706125921059715, guid: 5156c2323509d49a689bc3e2195b4504, type: 3}
   handCanvasParent: {fileID: 1991041870}
+  discardAreaTransform: {fileID: 374664328}
   rootCanvas: {fileID: 108522727}
 --- !u!114 &1485507870
 MonoBehaviour:
