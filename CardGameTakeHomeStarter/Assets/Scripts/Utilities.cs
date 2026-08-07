@@ -42,5 +42,10 @@ namespace CardGame {
 			list.RemoveAt( list.Count - 1 );
 			return obj;
 		}
+
+		/// <summary>
+		/// Returns a Vector3 with each axis equal to value. Something of an equivalent to Vector3.one.
+		/// </summary>
+		public static Vector3 SameValueVector( float value ) => new Vector3( value , value , value );
 	}
 }
