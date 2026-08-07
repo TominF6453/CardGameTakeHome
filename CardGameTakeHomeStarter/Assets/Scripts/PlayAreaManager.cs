@@ -82,7 +82,13 @@ namespace CardGame {
 
 		#region Events
 		// Events called from the buttons.
-		public void QuitGame() => Application.Quit();
+		public void QuitGame() {
+#if UNITY_EDITOR
+			UnityEditor.EditorApplication.ExitPlaymode();
+#else
+			Application.Quit();
+#endif
+		}
 		public void RestartGame() {
 			ResetPlayAreaManager();
 			DeckManager.Instance.ResetDeckManager();
