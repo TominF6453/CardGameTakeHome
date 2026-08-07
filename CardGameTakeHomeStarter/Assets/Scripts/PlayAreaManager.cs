@@ -32,10 +32,15 @@ namespace CardGame {
 		#endregion
 
 		#region Parameters/Getters
+		public static Transform PlayArea => Instance.playAreaTransform;
 		public static int GridXSize => Instance.playAreaWidthCards;
 		public static int GridYSize => Instance.playAreaHeightCards;
 		public static float LateralCardOffset => Instance.lateralCardOffset;
 		public static float VerticalCardOffset => Instance.verticalCardOffset;
+
+		public static bool IsPointInPlayArea ( Vector2 screenPoint ) {
+			return RectTransformUtility.RectangleContainsScreenPoint( (RectTransform)Instance.playAreaTransform , screenPoint );
+		}
 		#endregion
 
 		#region Mono Implementation
@@ -75,6 +80,53 @@ namespace CardGame {
 				}
 			}
 		}
+
+		public static CardSlot GetClosestSlot( Vector2 pos ) {
+			return Instance.FindClosestAvailable( pos );
+		}
+		private CardSlot FindClosestAvailable( Vector2 localPos ) {
+			// Find the closest CardSlot marked Available based on the canvas local position.
+			CardSlot closest = null;
+			float dist = float.MaxValue; // searching for min
+
+			foreach ( CardSlot slot in cardSlotGrid ) {
+				// Check if available first.
+				if ( slot.status != CardSlot.CardSlotStatus.Available ) continue;
+
+				// Check distance.
+				float testDist = ( slot.GetCanvasPosition - localPos ).magnitude;
+				if ( testDist < dist ) {
+					dist = testDist;
+					closest = slot;
+				}
+			}
+
+			return closest;
+		}
+
+		public static void PlayCard( CardSlot slot , CardData card ) {
+			Instance.AssignCardToSlot( slot, card );
+		}
+		private void AssignCardToSlot( CardSlot slot, CardData card ) {
+			if ( slot.status != CardSlot.CardSlotStatus.Available ) return; // just in case
+
+			// Set card.
+			slot.SetCard( card );
+
+			// Make neighbours available.
+			MakeSlotAvailable( slot.GetGridPosition.x - 1 , slot.GetGridPosition.y );
+			MakeSlotAvailable( slot.GetGridPosition.x + 1 , slot.GetGridPosition.y );
+			MakeSlotAvailable( slot.GetGridPosition.x , slot.GetGridPosition.y - 1 );
+			MakeSlotAvailable( slot.GetGridPosition.x , slot.GetGridPosition.y + 1 );
+		}
+
+		private void MakeSlotAvailable( int x, int y ) {
+			if ( x < 0 || y < 0 || x >= playAreaWidthCards || y >= playAreaHeightCards ) return; // Out of array bounds.
+
+			// Check the slot isn't already full, then make available.
+			CardSlot slot = cardSlotGrid[x , y];
+			if ( slot.status == CardSlot.CardSlotStatus.Locked ) slot.status = CardSlot.CardSlotStatus.Available;
+		}
 		#endregion
 
 		#region Coroutines
@@ -100,7 +152,7 @@ namespace CardGame {
 		}
 
 		public Vector2 GetCanvasPosition => new(canvasXPos, canvasYPos);
-		public (int,int) GetGridPosition => new(gridXPos, gridYPos); // Vector2 stores floats, so use a tuple instead.
+		public (int x,int y) GetGridPosition => new(gridXPos, gridYPos); // Vector2 stores floats, so use a tuple instead.
 
 		public void SetCard( CardData card ) {
 			presentCard = card;
