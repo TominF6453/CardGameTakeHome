@@ -74,7 +74,7 @@ namespace CardGame {
 		}
 
 		public void DrawToFull() {
-			while ( !HandManager.IsHandFull || !IsDeckEmpty ) DrawCard();
+			while ( !HandManager.IsHandFull && !IsDeckEmpty ) DrawCard();
 		}
 
 		public void DisableUI() {
