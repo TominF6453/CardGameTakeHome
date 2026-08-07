@@ -39,14 +39,14 @@ namespace CardGame {
 		public static float VerticalCardOffset => Instance.verticalCardOffset;
 
 		public static bool IsPointInPlayArea ( Vector2 screenPoint ) {
-			return RectTransformUtility.RectangleContainsScreenPoint( (RectTransform)Instance.playAreaTransform , screenPoint );
+			return RectTransformUtility.RectangleContainsScreenPoint( (RectTransform)Instance.playAreaTransform, screenPoint );
 		}
 		#endregion
 
 		#region Mono Implementation
 		private void Awake() {
 			// Static singleton.
-			if ( Instance == null ) Destroy( this );
+			if ( Instance != null ) Destroy( this );
 			else Instance = this;
 		}
 
