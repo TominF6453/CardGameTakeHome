@@ -61,6 +61,19 @@ namespace CardGame {
 			foreach ( Card card in cardsInHand ) card.SetInteractable( false );
 			foreach ( Transform t in handUITransforms ) t.gameObject.SetActive( false );
 		}
+		
+		public void EnableUI() {
+			foreach ( Transform t in handUITransforms ) t.gameObject.SetActive( true );
+		}
+
+		public void ResetHandManager() {
+			// Destroy all cards in hand, new hand list.
+			foreach ( Card card in cardsInHand ) Destroy( card.gameObject );
+			cardsInHand = new();
+
+			// Reenable hand UIs
+			EnableUI();
+		}
 		#endregion
 
 		#region Coroutines

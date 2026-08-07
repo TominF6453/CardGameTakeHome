@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.UI;
 
 namespace CardGame {
     /// <summary>
@@ -17,6 +18,8 @@ namespace CardGame {
         [Header("References")]
         [SerializeField] Transform playAreaTransform;
 		[SerializeField] TextMeshProUGUI scoreText;
+		[SerializeField] Button endGameButton;
+		[SerializeField] Button restartButton;
 
 		[Header("Parameters")]
 		[Tooltip("The amount of cards fitting in the play area horizontally. Should be odd for a proper center.")]
@@ -72,16 +75,39 @@ namespace CardGame {
 			// Generate the card grid starting with the one in the middle.
 			ConstructCardGrid();
 
-			// Make sure score text is disabled.
-			scoreText.text = $"Score: 0";
-			scoreText.gameObject.SetActive( false );
+			// Disable score and buttons from endgame.
+			DisableEndgameUI();
 		}
 		#endregion
 
 		#region Events
+		// Events called from the buttons.
+		public void QuitGame() => Application.Quit();
+		public void RestartGame() {
+			ResetPlayAreaManager();
+			DeckManager.Instance.ResetDeckManager();
+			HandManager.Instance.ResetHandManager();
+		}
 		#endregion
 
 		#region Helpers
+		public void ResetPlayAreaManager() {
+			// Destroy all cards present, construct new grid.
+			foreach ( CardSlot slot in cardSlotGrid ) Destroy( slot.GetCardTransform.gameObject );
+			ConstructCardGrid();
+
+			DisableEndgameUI();
+		}
+
+		private void DisableEndgameUI() {
+			// Make sure score text is disabled.
+			scoreText.text = $"Score: 0";
+			scoreText.gameObject.SetActive( false );
+
+			// Make sure endgame buttons are disabled.
+			endGameButton.gameObject.SetActive( false );
+			restartButton.gameObject.SetActive( false );
+		}
 		private void ConstructCardGrid() {
 			// Define a 2D array to store all the card slots.
 			cardSlotGrid = new CardSlot[playAreaWidthCards , playAreaHeightCards];
@@ -176,9 +202,13 @@ namespace CardGame {
 					StartCoroutine( CardAnimation( slot ) );
 					score += slot.GetCard.GetValue;
 					UpdateScoreText( score );
+					yield return new WaitForSeconds( cardScoringDelay ); // Small wait time to add a bit of a wave to scoring.
 				}
-				yield return new WaitForSeconds( cardScoringDelay ); // Small wait time to add a bit of a wave to scoring.
 			}
+
+			// After scoring complete, show buttons.
+			restartButton.gameObject.SetActive( true );
+			endGameButton.gameObject.SetActive( true );
 
 			yield return null;
 		}

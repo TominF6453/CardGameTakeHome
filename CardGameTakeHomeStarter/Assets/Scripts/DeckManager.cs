@@ -42,9 +42,7 @@ namespace CardGame {
 		}
 
 		private void Start() {
-			// Generate and shuffle a new deck.
-			currentDeck = new List<CardData>( cardDatas );
-			currentDeck.Shuffle(7); // 7 shuffles for "true random"
+			ResetDeckManager();
 		}
 		#endregion
 
@@ -77,8 +75,20 @@ namespace CardGame {
 			while ( !HandManager.IsHandFull && !IsDeckEmpty ) DrawCard();
 		}
 
+		public void EnableUI() {
+			foreach ( Transform t in deckUITransforms ) t.gameObject.SetActive( true );
+		}
 		public void DisableUI() {
 			foreach ( Transform t in deckUITransforms ) t.gameObject.SetActive( false );
+		}
+
+		public void ResetDeckManager() {
+			// Generate and shuffle a new deck.
+			currentDeck = new List<CardData>( cardDatas );
+			currentDeck.Shuffle( 7 ); // 7 shuffles for "true random"
+
+			// Enable UI
+			EnableUI();
 		}
 		#endregion
 
