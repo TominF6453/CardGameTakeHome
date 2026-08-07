@@ -43,8 +43,8 @@ namespace CardGame {
 		}
 		public void OnDrag( PointerEventData eventData ) {
 			// Convert the screen position to the root canvas position, set card position.
-			RectTransformUtility.ScreenPointToLocalPointInRectangle( (RectTransform)DeckManager.GetRootCanvas.transform , eventData.position , eventData.pressEventCamera , out Vector2 localPoint );
-			rect.anchoredPosition = localPoint;
+			RectTransformUtility.ScreenPointToWorldPointInRectangle( (RectTransform)DeckManager.GetRootCanvas.transform , eventData.position , eventData.pressEventCamera , out Vector3 worldPoint );
+			rect.position = worldPoint;
 		}
 		public void OnEndDrag( PointerEventData eventData ) {
 			// Always reset size.
