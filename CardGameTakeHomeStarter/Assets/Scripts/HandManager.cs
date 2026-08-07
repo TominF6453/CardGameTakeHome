@@ -25,6 +25,8 @@ namespace CardGame {
 
 		#region Parameters/Getters
 		public bool HandFull => cardsInHand.Count >= handSize;
+
+		public static Transform GetHandTransform => Instance.handArea;
 		#endregion
 
 		#region Mono Implementation
@@ -44,9 +46,13 @@ namespace CardGame {
 		#region Helpers
 		public void AddCard( Card card ) {
 			cardsInHand.Add( card );
-			card.transform.parent = handArea;
+			card.transform.SetParent(handArea);
+		}
+		public void RemoveCard( Card card ) {
+			cardsInHand.Remove( card );
 		}
 		public static void AddCardToHand( Card card ) => Instance.AddCard( card );
+		public static void RemoveCardFromHand( Card card ) => Instance.RemoveCard( card );
 		public static bool AtMaxHandSize => Instance.HandFull;
 		#endregion
 
