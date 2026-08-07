@@ -141,9 +141,6 @@ namespace CardGame {
 			MakeSlotAvailable( slot.GetGridPosition.x + 1 , slot.GetGridPosition.y );
 			MakeSlotAvailable( slot.GetGridPosition.x , slot.GetGridPosition.y - 1 );
 			MakeSlotAvailable( slot.GetGridPosition.x , slot.GetGridPosition.y + 1 );
-
-			// Check game state for a complete game.
-			CheckGameState();
 		}
 
 		private void MakeSlotAvailable( int x, int y ) {
@@ -154,7 +151,7 @@ namespace CardGame {
 			if ( slot.status == CardSlot.CardSlotStatus.Locked ) slot.status = CardSlot.CardSlotStatus.Available;
 		}
 
-		private void CheckGameState() {
+		public void CheckGameState() {
 			if ( IsGameComplete ) {
 				// Disable other UIs.
 				DeckManager.Instance.DisableUI();

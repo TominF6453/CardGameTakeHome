@@ -51,6 +51,8 @@ namespace CardGame {
 		}
 		public void RemoveCard( Card card ) {
 			cardsInHand.Remove( card );
+			// Game state meaningfully changes whenever a card is removed from the hand.
+			PlayAreaManager.Instance.CheckGameState();
 		}
 		public static void AddCardToHand( Card card ) => Instance.AddCard( card );
 		public static void RemoveCardFromHand( Card card ) => Instance.RemoveCard( card );
