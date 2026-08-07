@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace CardGame {
 	/// <summary>
 	/// The actual in-game card, prefab component.
 	/// </summary>
-	public class Card : MonoBehaviour {
+	public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
 		#region Statics & Constants
 		#endregion
@@ -23,6 +24,12 @@ namespace CardGame {
 		#endregion
 
 		#region Mono Implementation
+		#endregion
+
+		#region DragHandler Implementation
+		public void OnBeginDrag( PointerEventData eventData ) => throw new System.NotImplementedException();
+		public void OnDrag( PointerEventData eventData ) => throw new System.NotImplementedException();
+		public void OnEndDrag( PointerEventData eventData ) => throw new System.NotImplementedException();
 		#endregion
 
 		#region Events
