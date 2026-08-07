@@ -3086,7 +3086,7 @@ MonoBehaviour:
   scoreText: {fileID: 173630263}
   endGameButton: {fileID: 1124623479}
   restartButton: {fileID: 14636473}
-  playAreaWidthCards: 3
+  playAreaWidthCards: 11
   playAreaHeightCards: 3
   lateralCardOffset: 120
   verticalCardOffset: 167
